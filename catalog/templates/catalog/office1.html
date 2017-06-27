@@ -1,0 +1,271 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Корзина</title>
+    <link rel="stylesheet" type="text/css" href="{% static "/catalog/css/style.css" %}">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="{% static "js/jquery214min.js" %}"></script>
+    <script src="{% static "js/scripts.js" %}"></script>
+</head>
+<body>
+<div id="shop_main_body"></div>
+
+<div class="shop_container">
+    <header>
+        <div class="top_links">
+            <a href="#" class="pull-left hidden-xs hidden-sm">О компании</a><a href="#" class="pull-left hidden-xs hidden-sm">Доставка и оплата</a><a href="#" class="pull-left hidden-xs hidden-sm">Контакты</a>
+            {% if user.is_authenticated %}<a class="pull-right" href="{% url "users:logout" %}">Выход</a> <a class="pull-right">Привет, {{user.username}} </a> {% else %}<a href="{% url "users:register" %}" class="pull-right">Вход / Регистрация </a>{% endif %}
+            <div class="clearfix"></div>
+        </div>
+        <div class="col-sm-12 col-md-10 top_brown">
+            <table>
+                <tr>
+                    <td class="brand"><h1><a href="/">avdey</a></h1></td>
+                    <td class="search_block hidden-xs hidden-sm">
+                      <form method='post' action="{% url 'search' %}">
+                          {% csrf_token %}
+                        <input type="text" name='q' id="search" placeholder="поиск...">
+                        <input type="submit" value="найти" id="search_button">
+                      </form>
+                    </td>
+                    <td class="phones">
+                      375 29 8836989<span class="small">пн-пт 10:00-20:00, сб-вс 10:00-18:00</span><br>
+                      375 25 5000884<span>Звони, заказывай</span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <a style="text-decoration:none;" href="{% url "cart:CartDetail" %}" class="col-md-2 hidden-xs hidden-sm basket_big text-center">
+            <div class="img-basket"></div>
+              Корзина ({{ cart.get_total_quantity }})
+        </a>
+        <div class="clearfix"></div>
+        <ul class="top_menu">
+            <li class="hidden-xs hidden-sm">
+                <a href="#" class="can_open">Бренды</a>
+                <div>
+                    <ul class="pull-left">
+                        <li><a href="#">Anskin</a></li>
+                        <li><a href="#">Baviphat</a></li>
+                        <li><a href="#">Club Clio</a></li>
+                        <li><a href="#">Holika Holika</a></li>
+                        <li><a href="#">Anskin</a></li>
+                        <li><a href="#">Baviphat</a></li>
+                        <li><a href="#">Club Clio</a></li>
+                        <li><a href="#">Holika Holika</a></li>
+                        <li><a href="#">Anskin</a></li>
+                        <li><a href="#">Baviphat</a></li>
+                        <li><a href="#">Club Clio</a></li>
+                        <li><a href="#">Holika Holika</a></li>
+                        <li><a href="#">Anskin</a></li>
+                        <li><a href="#">Baviphat</a></li>
+                        <li><a href="#">Club Clio</a></li>
+                        <li><a href="#">Holika Holika</a></li>
+                        <li><a href="#">Holika Holika</a></li>
+                    </ul>
+
+                </div>
+            </li>
+            <li class="hidden-xs hidden-sm">
+                <a href="#" class="can_open">Лучшее</a>
+                <div>
+                    <ul class="pull-left">
+                        <li><a href="#">Anskin</a></li>
+                        <li><a href="#">Baviphat</a></li>
+                        <li><a href="#">Club Clio</a></li>
+                        <li><a href="#">Holika Holika</a></li>
+                        <li><a href="#">Anskin</a></li>
+                        <li><a href="#">Baviphat</a></li>
+                        <li><a href="#">Club Clio</a></li>
+                        <li><a href="#">Holika Holika</a></li>
+                        <li><a href="#">Anskin</a></li>
+                        <li><a href="#">Baviphat</a></li>
+                        <li><a href="#">Club Clio</a></li>
+                        <li><a href="#">Holika Holika</a></li>
+                        <li><a href="#">Anskin</a></li>
+                        <li><a href="#">Baviphat</a></li>
+                        <li><a href="#">Club Clio</a></li>
+                        <li><a href="#">Holika Holika</a></li>
+                        <li><a href="#">Holika Holika</a></li>
+                    </ul>
+
+                </div>
+            </li>
+            <li class="hidden-xs hidden-sm"><a href="#">Джинсы</a></li>
+            <li class="hidden-xs hidden-sm"><a href="#">Рубашки</a></li>
+            <li class="hidden-xs hidden-sm"><a href="#">Пиджаки</a></li>
+
+            <li class="hidden-md hidden-lg">
+                <a href="#" class="can_open">Каталог</a>
+                <div class="mobile_subcats">
+                    <ul>
+                        <li>
+                            <a href="#" class="can_open">Бренды</a>
+                            <div>
+                                <ul>
+                                    <li><a href="#">Anskin</a></li>
+                                    <li><a href="#">Baviphat</a></li>
+                                    <li><a href="#">Club Clio</a></li>
+                                    <li><a href="#">Holika Holika</a></li>
+                                    <li><a href="#">Anskin</a></li>
+                                    <li><a href="#">Baviphat</a></li>
+                                    <li><a href="#">Club Clio</a></li>
+                                    <li><a href="#">Holika Holika</a></li>
+                                    <li><a href="#">Anskin</a></li>
+                                    <li><a href="#">Baviphat</a></li>
+                                    <li><a href="#">Club Clio</a></li>
+                                    <li><a href="#">Holika Holika</a></li>
+                                    <li><a href="#">Anskin</a></li>
+                                    <li><a href="#">Baviphat</a></li>
+                                    <li><a href="#">Club Clio</a></li>
+                                    <li><a href="#">Holika Holika</a></li>
+                                    <li><a href="#">Holika Holika</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="#" class="can_open">Поло</a>
+                            <div>
+                                <ul>
+                                    <li><a href="#">Anskin</a></li>
+                                    <li><a href="#">Baviphat</a></li>
+                                    <li><a href="#">Club Clio</a></li>
+                                    <li><a href="#">Holika Holika</a></li>
+                                    <li><a href="#">Anskin</a></li>
+                                    <li><a href="#">Baviphat</a></li>
+                                    <li><a href="#">Club Clio</a></li>
+                                    <li><a href="#">Holika Holika</a></li>
+                                    <li><a href="#">Anskin</a></li>
+                                    <li><a href="#">Baviphat</a></li>
+                                    <li><a href="#">Club Clio</a></li>
+                                    <li><a href="#">Holika Holika</a></li>
+                                    <li><a href="#">Anskin</a></li>
+                                    <li><a href="#">Baviphat</a></li>
+                                    <li><a href="#">Club Clio</a></li>
+                                    <li><a href="#">Holika Holika</a></li>
+                                    <li><a href="#">Holika Holika</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li><a href="#">Джинсы</a></li>
+                        <li><a href="#">Рубашки</a></li>
+                        <li><a href="#">Костюмы</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li class="hidden-md hidden-lg"><a href="#">О магазине</a></li>
+            <li class="hidden-md hidden-lg pull-right"><a href="#" class="basket_mob">Корзина пуста</a></li>
+            <li class="hidden-md hidden-lg pull-right"><a href="#" class="search"></a></li>
+        </ul>
+    </header>
+      <p class="text-right">
+
+    <div class="white_row">
+        <div class="user_panel col-md-3 col-sm-12">
+            <a href="#" class="edit_link">Сменить картинку</a>
+            <img src="{% static "/catalog/" %}img/ava.jpg">
+            <a href="#" class="edit_link">редактировать</a>
+            <p class="name">Иван Иванов</p>
+            <p class="orders">Покупок: <span>3</span></p>
+            <p class="phone">ТЕЛ. 3333333</p>
+            <h2>Сменить пароль</h2>
+            <input type="password" placeholder="старый пароль" id="old_pass">
+            <input type="password" placeholder="новый пароль" id="new_pass">
+            <input type="password" placeholder="повторить пароль" id="new_pass_rep">
+            <a href="#" id="change_pass">Сменить</a>
+            <a href="#" id="logout">Выйти</a>
+        </div>
+        <div class="col-sm-12 col-md-9">
+            <section class="tovary_block">
+                <h2>Ваши товары</h2>
+                <ul class="tovary_catalog">
+                  {% for item in cart %}
+                    {% with product=item.product %}
+                    <li>
+                        <img src="{{ product.image.url }}">
+                        <p>{{ product.name }} - {{ item.quantity }} кол.</p>
+                        <div class="price">{{ item.price }} <span>руб</span></div><a href="{% url 'item' product.id %}" class="more">Подробнее</a>
+                        <div class="clearfix"></div>
+                        <a href="{% url "cart:CartRemove" product.id %}" class="del_link pull-right">Удалить покупку</a>
+                    </li>
+                    {% endwith %}
+                  {% endfor %}
+
+                </ul>
+            </section>
+
+            <form id="order_form" action="{% url 'order' %}" method="post">
+              {% csrf_token %}
+                <div class="row">
+                    <div class="col-md-3"><input name="last_name" type="text" placeholder="Фамилия"></div>
+                    <div class="col-md-3"><input name="first_name" type="text" placeholder="Имя"></div>
+                    <div class="col-md-3"><input name="two_name" type="text" placeholder="Отчество"></div>
+                    <div class="col-md-3"><input name="phone" type="text" placeholder="Телефон"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3"><input name="stat" type="text" placeholder="Город"></div>
+                    <div class="col-md-3">
+                        <input type="text" name="street" placeholder="Улица" class="street pull-left">
+                        <input type="text" name="house" placeholder="Дом" class="small_input pull-right">
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" name="index" placeholder="Индекс" class="medium_input">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-8">
+                        <textarea name="att" placeholder="Примечание к покупке..."></textarea>
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-3 sum_block">
+                        <input type="text" value="{{ cart.get_total_quantity }} шт." class="sum_input">
+                        <input name="product" type="text" value="{{ cart.get_total_price }}" class="sum_input text-center"> руб.
+                        <div class="clearfix"></div>
+                        <p class="text-right">Общая сумма</p>
+                        <button type="submit" class="pull-right">Оплатить</button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+
+<footer>
+    <div class="shop_container">
+        <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-4 text-left links">
+            <a href="#">О компании</a>
+            <a href="#">Доставка и оплата</a>
+            <a href="#">Контакты</a>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-4 col-md-push-4 text-right">
+            <ul class="soc">
+                <li><a href="#" target="_blank"><img src="{% static "/catalog/" %}img/soc_vk.png"></a></li>
+                <li><a href="#" target="_blank"><img src="{% static "/catalog/" %}img/soc_ok.png"></a></li>
+                <li><a href="#" target="_blank"><img src="{% static "/catalog/" %}img/soc_fb.png"></a></li>
+                <li><a href="#" target="_blank"><img src="{% static "/catalog/" %}img/soc_tw.png"></a></li>
+                <li><a href="#" target="_blank"><img src="{% static "/catalog/" %}img/soc_gp.png"></a></li>
+                <li><a href="#" target="_blank"><img src="{% static "/catalog/" %}img/soc_mail.png"></a></li>
+            </ul>
+        </div>
+        <div class="clearfix hidden-lg hiddem-md"></div>
+        <div class="col-sm-12 col-md-4 col-md-pull-4 text-center">
+            <ul class="pays">
+                <li><a href="#" target="_blank"><img src="{% static "/catalog/" %}img/qiwi.png"></a></li>
+                <li><a href="#" target="_blank"><img src="{% static "/catalog/" %}img/visa.png"></a></li>
+                <li><a href="#" target="_blank"><img src="{% static "/catalog/" %}img/webmoney.png"></a></li>
+                <li><a href="#" target="_blank"><img src="{% static "/catalog/" %}img/yandex_money.png"></a></li>
+            </ul>
+            <!--p>&copy; 2016 www.site.ru<br>Copyright: Ali Sayed. All Rights Reserved.</p-->
+        </div>
+        <div class="clearfix"></div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

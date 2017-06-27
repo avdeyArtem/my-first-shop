@@ -1,0 +1,234 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Каталог</title>
+    <link rel="stylesheet" type="text/css" href="{% static "/catalog/css/style.css" %}">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="{% static "catalog/js/jquery214min.js" %}"></script>
+    <script src="{% static "catalog/js/scripts.js" %}"></script>
+    <script src="{% static "catalog/js/unslider.js" %}"></script>
+
+    <script>
+        $(function() {
+            $('.slider').unslider({
+                animation: 'fade',
+                autoplay: true,
+                arrows: false,
+                nav: true,
+                delay: 5000,
+                speed: 1000
+            })
+        })
+    </script>
+</head>
+<body>
+<div id="shop_main_body"></div>
+
+<div class="shop_container">
+    <header>
+        <div class="top_links">
+            <a href="#" class="pull-left hidden-xs hidden-sm">О компании</a><a href="#" class="pull-left hidden-xs hidden-sm">Доставка и оплата</a><a href="#" class="pull-left hidden-xs hidden-sm">Контакты</a>
+            {% if user.is_authenticated %}<a class="pull-right" href="{% url "users:logout" %}">Выход</a> <a class="pull-right">Привет, {{user.username}} </a> {% else %}<a href="{% url "users:register" %}" class="pull-right">Вход / Регистрация </a>{% endif %}
+        </div>
+        <div class="col-sm-12 col-md-10 top_brown">
+            <table>
+                <tr>
+                  <td class="brand"><h1><a href="/">avdey</a></h1></td>
+                    <td class="search_block hidden-xs hidden-sm">
+                      <form method='post' action="{% url 'search' %}">
+                          {% csrf_token %}
+                        <input type="text" name='q' id="search" placeholder="поиск...">
+                        <input type="submit" value="найти" id="search_button">
+                      </form>
+                    </td>
+                    <td class="phones">
+                      375 29 8836989<span class="small">пн-пт 10:00-20:00, сб-вс 10:00-18:00</span><br>
+                      375 25 5000884<span>Звони, заказывай</span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <a style="text-decoration:none;" href="{% url "cart:CartDetail" %}" class="col-md-2 hidden-xs hidden-sm basket_big text-center">
+            <div class="img-basket"></div>
+              Корзина ({{ cart.get_total_quantity }})
+        </a>
+        <div class="clearfix"></div>
+        <ul class="top_menu">
+          <li class="hidden-xs hidden-sm">
+              <a href="catalog.html" class="can_open">Бренды</a>
+              <div>
+                  <ul class="pull-left">
+                      {% for brand in brands %}
+                      <li><a href="#">{{brand.name}}</a></li>
+                      {% endfor %}
+                  </ul>
+
+              </div>
+          </li>
+          <li class="hidden-xs hidden-sm">
+              <a href="catalog.html" class="can_open">Лучшее</a>
+              <div>
+                  <ul class="pull-left">
+                    {% for brand in popular %}
+                    <li><a href="">{{brand.name}}</a></li>
+                    {% endfor %}
+                  </ul>
+
+              </div>
+          </li>
+            <li class="hidden-xs hidden-sm"><a href="#">Джинсы</a></li>
+            <li class="hidden-xs hidden-sm"><a href="#">Рубашки</a></li>
+            <li class="hidden-xs hidden-sm"><a href="#">Пиджаки</a></li>
+
+            <li class="hidden-md hidden-lg">
+                <a href="#" class="can_open">Каталог</a>
+                <div class="mobile_subcats">
+                    <ul>
+                        <li>
+                            <a href="#" class="can_open">Бренды</a>
+                            <div>
+                                <ul>
+                                    <li><a href="#">Anskin</a></li>
+                                    <li><a href="#">Baviphat</a></li>
+                                    <li><a href="#">Club Clio</a></li>
+                                    <li><a href="#">Holika Holika</a></li>
+                                    <li><a href="#">Anskin</a></li>
+                                    <li><a href="#">Baviphat</a></li>
+                                    <li><a href="#">Club Clio</a></li>
+                                    <li><a href="#">Holika Holika</a></li>
+                                    <li><a href="#">Anskin</a></li>
+                                    <li><a href="#">Baviphat</a></li>
+                                    <li><a href="#">Club Clio</a></li>
+                                    <li><a href="#">Holika Holika</a></li>
+                                    <li><a href="#">Anskin</a></li>
+                                    <li><a href="#">Baviphat</a></li>
+                                    <li><a href="#">Club Clio</a></li>
+                                    <li><a href="#">Holika Holika</a></li>
+                                    <li><a href="#">Holika Holika</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="#" class="can_open">Поло</a>
+                            <div>
+                                <ul>
+                                    <li><a href="#">Anskin</a></li>
+                                    <li><a href="#">Baviphat</a></li>
+                                    <li><a href="#">Club Clio</a></li>
+                                    <li><a href="#">Holika Holika</a></li>
+                                    <li><a href="#">Anskin</a></li>
+                                    <li><a href="#">Baviphat</a></li>
+                                    <li><a href="#">Club Clio</a></li>
+                                    <li><a href="#">Holika Holika</a></li>
+                                    <li><a href="#">Anskin</a></li>
+                                    <li><a href="#">Baviphat</a></li>
+                                    <li><a href="#">Club Clio</a></li>
+                                    <li><a href="#">Holika Holika</a></li>
+                                    <li><a href="#">Anskin</a></li>
+                                    <li><a href="#">Baviphat</a></li>
+                                    <li><a href="#">Club Clio</a></li>
+                                    <li><a href="#">Holika Holika</a></li>
+                                    <li><a href="#">Holika Holika</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li><a href="#">Джинсы</a></li>
+                        <li><a href="#">Рубашки</a></li>
+                        <li><a href="#">Костюмы</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li class="hidden-md hidden-lg"><a href="#">О магазине</a></li>
+            <li class="hidden-md hidden-lg pull-right"><a href="#" class="basket_mob">Корзина пуста</a></li>
+            <li class="hidden-md hidden-lg pull-right"><a href="#" class="search"></a></li>
+        </ul>
+    </header>
+    <div class="white_row">
+        <div class="hidden-xs hidden-sm col-md-3">
+          <ul class="catalog">
+              <li class="can_open">
+                  Женщинам
+                  <ul>
+                    {% for cat in category_1 %}
+                      <li><a href="{% url "category" cat.slug %}">{{cat.name}}</a></li>
+                    {% endfor %}
+                  </ul>
+              </li>
+              <li class="can_open">
+                  Мужчинам
+                  <ul>
+                    {% for cat in category_2 %}
+                      <li><a href="{% url "category" cat.slug %}">{{cat.name}}</a></li>
+                    {% endfor %}
+                  </ul>
+              </li>
+              <li class="can_open">
+                  Детям
+                  <ul>
+                    {% for cat in category_3 %}
+                      <li><a href="{% url "category" cat.slug %}">{{cat.name}}</a></li>
+                    {% endfor %}
+                  </ul>
+              </li>
+          </ul>
+        </div>
+        <div class="col-sm-12 col-md-9">
+            <ul class="breads">
+                <li>Найдены товары по запросу: {{q}}</li>
+            </ul>
+
+            <section class="tovary_block">
+                <h2>{{category.name}}</h2>
+                <ul class="tovary_catalog">
+                {% for product in result %}
+                    <li>
+                        <img src="{{product.image.url}}">
+                        <p>{{product.name}}</p>
+                        <div class="price">{{product.price}} <span>руб</span></div><a href="{% url 'item' product.id %}" class="more">Подробнее</a>
+                    </li>
+                {% empty %}
+                Товары отсутствуют
+                {% endfor %}
+                </ul>
+            </section>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+
+<footer>
+    <div class="shop_container">
+        <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-4 text-left links">
+            <a href="#">О компании</a>
+            <a href="#">Доставка и оплата</a>
+            <a href="#">Контакты</a>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-4 col-md-push-4 text-right">
+            <ul class="soc">
+                <li><a href="#" target="_blank"><img src="{% static "/catalog/" %}img/soc_vk.png"></a></li>
+                <li><a href="#" target="_blank"><img src="{% static "/catalog/" %}img/soc_ok.png"></a></li>
+                <li><a href="#" target="_blank"><img src="{% static "/catalog/" %}img/soc_fb.png"></a></li>
+                <li><a href="#" target="_blank"><img src="{% static "/catalog/" %}img/soc_tw.png"></a></li>
+                <li><a href="#" target="_blank"><img src="{% static "/catalog/" %}img/soc_gp.png"></a></li>
+                <li><a href="#" target="_blank"><img src="{% static "/catalog/" %}img/soc_mail.png"></a></li>
+            </ul>
+        </div>
+        <div class="clearfix hidden-lg hiddem-md"></div>
+        <div class="col-sm-12 col-md-4 col-md-pull-4 text-center">
+            <ul class="pays">
+                <li><a href="#" target="_blank"><img src="{% static "/catalog/" %}img/qiwi.png"></a></li>
+                <li><a href="#" target="_blank"><img src="{% static "/catalog/" %}img/visa.png"></a></li>
+                <li><a href="#" target="_blank"><img src="{% static "/catalog/" %}img/webmoney.png"></a></li>
+                <li><a href="#" target="_blank"><img src="{% static "/catalog/" %}img/yandex_money.png"></a></li>
+            </ul>
+            <!--p>&copy; 2016 www.site.ru<br>Copyright: Ali Sayed. All Rights Reserved.</p-->
+        </div>
+        <div class="clearfix"></div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

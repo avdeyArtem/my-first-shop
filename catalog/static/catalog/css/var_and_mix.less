@@ -1,0 +1,26 @@
+/* VARS */
+
+@text-font: 'Calibri';
+@zag-font: 'Bebas';
+
+@brown: #4d3737;
+@red: #c34948;
+@rose: #ed204b;
+@grey: rgba(0,0,0,.72);
+@border-color: #b5adad;
+
+/* MIXINS */
+
+.size(@w, @h) {
+  width: @w;
+  height: @h;
+}
+
+.flex(@wrap: wrap, @position: flex-start) {
+  display: flex;
+  display: -webkit-flex;
+  flex-wrap: @wrap;
+  -webkit-flex-wrap: @wrap;
+  justify-content: @position;
+  -webkit-justify-content: @position;
+}

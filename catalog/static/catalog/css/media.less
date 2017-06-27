@@ -1,0 +1,244 @@
+@media (max-width: 991px) {
+  body {
+    background: none;
+  }
+
+  header {
+    margin-bottom: 0!important;
+  }
+
+  #shop_main_body {
+    background: none;
+  }
+
+  .shop_container {
+    width: 100%!important;
+  }
+
+  section.slider {
+    height: 570px;
+
+    ul {
+      li {
+        height: auto!important;
+
+        .slider_image {
+          height: 200px;
+          padding-top: 0;
+        }
+
+        .slider_text {
+          height: 370px!important;
+
+          .slider_text_block {
+            padding: 20px 0;
+
+            h2 {
+              font-size: 35px;
+            }
+
+            p {
+              font-size: 16px;
+            }
+
+            a.slider_more {
+              font-size: 14px;
+              margin-top: 10px;
+              padding: 5px 25px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  section.about_block {
+    height: auto!important;
+    padding: 20px 10px;
+  }
+
+  footer {
+    padding: 20px 10px;
+
+    .links {
+      padding-right: 0;
+
+      a {
+        font-size: 10px;
+        margin-right: 5px;
+      }
+    }
+
+    p {
+      font-size: 13px;
+      margin-top: 5px;
+    }
+  }
+
+  .top_links {
+    margin-top: 0;
+    padding: 0 10px;
+
+    a {
+      color: black;
+    }
+  }
+
+  .top_brown {
+    table {
+      h1 {
+        background: url(../img/logo_mob.png) no-repeat left center;
+        font-size: 30px;
+        padding-left: 35px!important;
+      }
+
+      td {
+        &.brand {
+          padding-right: 0!important;
+          width: auto!important;
+        }
+
+        &.phones {
+          font-size: 10px;
+          background: url(../img/phone_mob.png) no-repeat left center;
+          padding-left: 26px!important;
+          width: 100px;
+
+          span {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  ul.top_menu {
+    display: block;
+
+    li {
+      display: inline-block;
+
+      a {
+        padding: 10px 0 10px 10px!important;
+        font-size: 12px;
+
+        &.basket_mob {
+          border-color: @red;
+          padding-right: 43px!important;
+          color: white;
+          background: @red url(../img/basket_mob.png) no-repeat right center;
+        }
+
+        &.search {
+          .size(62px, 39px);
+          background: url(../img/search_mob.png) no-repeat center center;
+        }
+      }
+    }
+  }
+
+  .tovary_catalog {
+    li {
+      .size(48%, auto)!important;
+
+      img {
+        max-width: 100%;
+        height: auto!important;
+      }
+
+      .price {
+        font-size: 16px;
+
+        span {
+          font-size: 10px;
+        }
+      }
+
+      .more {
+        font-size: 10px;
+        padding: 4px 10px!important;
+      }
+    }
+  }
+
+  .catalog_options {
+    ul {
+      li {
+        select {
+          font-size: 12px;
+          padding: 0;
+          background: none;
+          -webkit-appearance: menulist;
+          -moz-appearance: menulist;
+          appearance: menu;
+        }
+
+        button {
+          font-size: 5px!important;
+        }
+      }
+    }
+  }
+
+  .reg_block {
+    width: 100%;
+    padding: 0 0 20px!important;
+
+    h2 {
+      a {
+        font-size: 35px;
+        display: inline-block;
+        margin-right: 20px;
+      }
+    }
+  }
+
+  .item_block {
+    .item_about {
+      ul.item_menu {
+        li {
+          font-size: 10px;
+        }
+      }
+    }
+  }
+
+  .delivery_type {
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width: 1500px) {
+  .shop_container {
+    width: 98%;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1279px) {
+  .top_brown table td.search_block {
+    #search_button {
+      width: 35%;
+    }
+    #search {
+      width: 65%;
+    }
+  }
+
+  section.slider ul li .slider_text .slider_text_block {
+    p {
+      font-size: 16px;
+    }
+
+    h2 {
+      font-size: 40px;
+    }
+  }
+
+  .tovary_catalog li {
+    height: 380px;
+  }
+
+  #order_form input.sum_input {
+    font-size: 16px;
+  }
+}
